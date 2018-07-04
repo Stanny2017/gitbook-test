@@ -205,8 +205,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="section11">Section1.1</h1>
-<h1 id="react--&#x6781;&#x5BA2;&#x65F6;&#x95F4;">react- &#x6781;&#x5BA2;&#x65F6;&#x95F4;</h1>
+                                <h1 id="react-163-&#x6781;&#x5BA2;&#x65F6;&#x95F4;">react 16.3 &#x6781;&#x5BA2;&#x65F6;&#x95F4;</h1>
 <ul>
 <li>&#x4F20;&#x7EDF;web UI &#x5F00;&#x53D1; &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x72B6;&#x6001;&#x5206;&#x6563;&#x96BE;&#x4EE5;&#x8FFD;&#x8E2A;&#x548C;&#x7EF4;&#x62A4;</li>
 <li>react &#x59CB;&#x7EC8;&#x6574;&#x4F53;&#x5237;&#x65B0;&#x9875;&#x9762;</li>
@@ -297,6 +296,85 @@
 <li>&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#xFF08;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x6709;&#x81EA;&#x5DF1;&#x7684; ui &#x5448;&#x73B0;&#xFF0C;&#x53EA;&#x662F;&#x8D1F;&#x8D23;&#x4E3A;&#x5B83;&#x81EA;&#x5DF1;&#x5C01;&#x88C5;&#x7684;&#x7EC4;&#x4EF6;&#x63D0;&#x4F9B;&#x989D;&#x5916;&#x7684;&#x529F;&#x80FD;&#x652F;&#x6301;&#xFF0C;&#x6BD4;&#x5982;&#x63D0;&#x4F9B;&#x6570;&#x636E;&#xFF0C;  &#x89E3;&#x51B3;&#x7EC4;&#x4EF6;&#x591A;&#x5C42;&#x4F20;&#x9012;&#x8D44;&#x6E90;&#x95EE;&#x9898;&#xFF09; </li>
 <li>&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x5B50;&#x7EC4;&#x4EF6;</li>
 </ol>
+<h2 id="contenxt">contenxt</h2>
+<blockquote>
+<p>Context &#x901A;&#x8FC7;&#x7EC4;&#x4EF6;&#x6811;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x4F20;&#x9012;&#x6570;&#x636E;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4ECE;&#x800C;&#x907F;&#x514D;&#x4E86;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;&#x5C42;&#x7EA7;&#x624B;&#x52A8;&#x7684;&#x4F20;&#x9012; props &#x5C5E;&#x6027;&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x6839;&#x8282;&#x70B9; &#x63D0;&#x4F9B;&#x4E0A;&#x4E0B;&#x6587;&#x6570;&#x636E; provider</li>
+<li>&#x5B50;&#x8282;&#x70B9;&#x5171;&#x4EAB;&#x8FD9;&#x4E9B;&#x6570;&#x636E;</li>
+<li>provider&#xFF08;&#x662F;&#x6839;&#x8282;&#x70B9;&#xFF09;  value &#x8BBE;&#x7F6E;&#x7684;&#x503C;&#x901A;&#x8FC7; consumer &#x5B50;&#x8282;&#x70B9;&#x7684;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x4F20;&#x5165;</li>
+<li>&#x4E0D;&#x8981;&#x4EC5;&#x4EC5;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x5728;&#x51E0;&#x4E2A;&#x5C42;&#x7EA7;&#x4E0B;&#x7684;&#x7EC4;&#x4EF6;&#x4F20;&#x9012; props &#x800C;&#x4F7F;&#x7528; context&#xFF0C;&#x5B83;&#x662F;&#x88AB;&#x7528;&#x4E8E;&#x5728;&#x591A;&#x4E2A;&#x5C42;&#x7EA7;&#x7684;&#x591A;&#x4E2A;&#x7EC4;&#x4EF6;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x76F8;&#x540C;&#x6570;&#x636E;&#x7684;&#x60C5;&#x666F;&#x3002;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> ThemeContext = React.createContext(<span class="hljs-string">&apos;light&apos;</span>);
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    render(){
+        <span class="hljs-keyword">return</span> (
+            &lt;ThemeContext.Provider value= &quot;dark&quot;&gt;
+                &lt;ThemeButton&gt;
+            &lt;/ThemeContext&gt;
+        )
+    } 
+}
+function ThemeButton(prop){
+    return (
+        &lt;ThemeContext.Consumer&gt;
+            {
+                theme =&gt; &lt;Button {...props} theme={theme}&gt;&lt;/Button&gt;
+            }
+        &lt;/ThemeContext.Consumer&gt;
+    )
+}
+</code></pre>
+<h2 id="&#x811A;&#x624B;&#x67B6;">&#x811A;&#x624B;&#x67B6;</h2>
+<p>&#x4E09;&#x79CD;&#x811A;&#x624B;&#x67B6;&#x5DE5;&#x5177;&#xFF1A;</p>
+<ol>
+<li>Create React App&#xFF0C;</li>
+<li>Codesandbox&#xFF1A;&#x5728;&#x7EBF;&#x4EE3;&#x7801;&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x652F;&#x6301;react&#x3001;vue &#x4EE5;&#x53CA; angular &#x7B49;&#x9879;&#x76EE;&#x3002;&#x5728;&#x7EBF;&#x811A;&#x624B;&#x67B6;</li>
+<li>Rekit&#xFF1A;&#x57FA;&#x4E8E; create-react-app</li>
+</ol>
+<h3 id="&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981;&#x811A;&#x624B;&#x67B6;">&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981;&#x811A;&#x624B;&#x67B6;</h3>
+<p>web &#x5F00;&#x53D1;&#x65E5;&#x8D8B;&#x590D;&#x6742;</p>
+<ol>
+<li>react &#x7BA1;&#x7406; UI</li>
+<li>Redux &#x72B6;&#x6001;&#x7BA1;&#x7406;</li>
+<li>React/Router</li>
+<li>Babel &#x4EE3;&#x7801;&#x8F6C;&#x6362;&#x517C;&#x5BB9;</li>
+<li>eslint &#x4EE3;&#x7801;&#x5BA1;&#x67E5;</li>
+</ol>
+<p>&#x811A;&#x624B;&#x67B6;&#x5DE5;&#x5177;&#x63D0;&#x524D;&#x5B9A;&#x4E49;&#x597D;&#x5178;&#x578B;&#x7684;&#x9879;&#x76EE;&#x9700;&#x8981;&#x7684;&#x7C7B;&#x5E93;&#x914D;&#x7F6E;&#x3002;</p>
+<p>create-react-app &#xFF08;facebook &#x63A8;&#x51FA;&#xFF09;</p>
+<ul>
+<li>&#x9002;&#x5408;&#x5B66;&#x4E60;react &#x6216;&#x8005;&#x5F00;&#x53D1;&#x5C0F;&#x578B;&#x9879;&#x76EE;&#x65F6;&#x4F7F;&#x7528;&#xFF0C;&#x5185;&#x7F6E;&#x7684;&#x5DE5;&#x5177;&#x662F;&#x6700;&#x5C0F;&#x5316;</li>
+<li>&#x6574;&#x5408;&#x4E86;babel&#x3001;webpack&#x3001; eslint...</li>
+</ul>
+<p>create-react-app + (Redux + React Router + less/scss + feature oriented architecture + dedicated ide) = Rekit</p>
+<h2 id="codesandbox">codesandbox</h2>
+<ul>
+<li>webpack &#x6253;&#x5305;&#x5DE5;&#x5177;&#x8FD0;&#x884C;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;</li>
+<li>&#x8BA9;&#x4F60;&#x4E0D;&#x518D;&#x5173;&#x6CE8;&#x4E1A;&#x52A1;&#x4E4B;&#x5916;&#x7AEF;&#x914D;&#x7F6E;</li>
+<li>&#x4E0D;&#x9700;&#x642D;&#x5EFA;&#x672C;&#x5730;&#x73AF;&#x5883;</li>
+</ul>
+<h2 id="&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981;&#x6253;&#x5305;">&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981;&#x6253;&#x5305;</h2>
+<ol>
+<li>&#x7F16;&#x8BD1; es6 &#x8BED;&#x6CD5;&#x7279;&#x6027;&#xFF0C;&#x7F16;&#x8BD1; jsx</li>
+<li>&#x6574;&#x5408;&#x8D44;&#x6E90;&#xFF0C;&#x4F8B;&#x5982;&#x56FE;&#x7247;&#xFF0C; less/sass</li>
+<li><p>&#x4F18;&#x5316;&#x4EE3;&#x7801;&#x4F53;&#x79EF;</p>
+</li>
+<li><p>webpack&#xFF1A; &#x5404;&#x79CD;loader =&gt; &#x6BCF;&#x79CD;&#x8D44;&#x6E90;&#x6253;&#x5305;&#x540E;&#x5F62;&#x6210;&#x53EF;&#x4EE5;&#x90E8;&#x7F72;&#x7684;&#x8D44;&#x6E90;</p>
+</li>
+<li>&#x6709;&#x4E86;&#x811A;&#x624B;&#x67B6;&#x5DE5;&#x5177;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x592A;&#x591A;&#x7EC6;&#x8282;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x6253;&#x5305;&#x7ED3;&#x679C;&#x3002;</li>
+</ol>
+<h2 id="&#x6253;&#x5305;&#x6CE8;&#x610F;&#x4E8B;&#x9879;">&#x6253;&#x5305;&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h2>
+<ol>
+<li>&#x8BBE;&#x7F6E; nodejs &#x73AF;&#x5883;&#x53D8;&#x91CF;&#x4E3A; production&#xFF08;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x548C;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E0D;&#x4E00;&#x6837;&#xFF09;  <code>scripts/build.js</code></li>
+<li>&#x7981;&#x7528;&#x5F00;&#x53D1;&#x65F6;&#x4E13;&#x7528;&#x4EE3;&#x7801;&#xFF0C;&#x6BD4;&#x5982;logger</li>
+<li><p>&#x8BBE;&#x7F6E;&#x5E94;&#x7528;&#x6839;&#x8DEF;&#x5F84;&#xFF1A; <code>package.json</code>  &quot;homepage&quot; &#x5C5E;&#x6027;&#x6307;&#x660E;&#x5E94;&#x7528;&#x4F1A;&#x88AB;&#x90E8;&#x7F72;&#x5728;&#x54EA;&#x91CC;</p>
+</li>
+<li><p><code>npm run build</code> &#x901A;&#x5E38;&#x4F1A; &#x751F;&#x6210;&#x4E00;&#x4E2A; build &#x76EE;&#x5F55;&#xFF0C;&#x7528;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D; &#x90E8;&#x7F72;&#x3002;</p>
+</li>
+</ol>
 
                                 
                                 </section>
@@ -340,7 +418,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Section1.1","level":"1.2.1","depth":2,"next":{"title":"Section1.2","level":"1.2.2","depth":2,"path":"chapter1/section1.2.md","ref":"chapter1/section1.2.md","articles":[]},"previous":{"title":"Chapter1","level":"1.2","depth":1,"path":"chapter1/README.md","ref":"chapter1/README.md","articles":[{"title":"Section1.1","level":"1.2.1","depth":2,"path":"chapter1/section1.1.md","ref":"chapter1/section1.1.md","articles":[]},{"title":"Section1.2","level":"1.2.2","depth":2,"path":"chapter1/section1.2.md","ref":"chapter1/section1.2.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter1/section1.1.md","mtime":"2018-07-03T14:49:48.579Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-03T14:43:32.752Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Section1.1","level":"1.2.1","depth":2,"next":{"title":"Section1.2","level":"1.2.2","depth":2,"path":"chapter1/section1.2.md","ref":"chapter1/section1.2.md","articles":[]},"previous":{"title":"Chapter1","level":"1.2","depth":1,"path":"chapter1/README.md","ref":"chapter1/README.md","articles":[{"title":"Section1.1","level":"1.2.1","depth":2,"path":"chapter1/section1.1.md","ref":"chapter1/section1.1.md","articles":[]},{"title":"Section1.2","level":"1.2.2","depth":2,"path":"chapter1/section1.2.md","ref":"chapter1/section1.2.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter1/section1.1.md","mtime":"2018-07-04T08:14:44.701Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-03T14:43:32.752Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1,6 +1,4 @@
-# Section1.1
-
-# react- 极客时间
+# react 16.3 极客时间
 
 - 传统web UI 开发 应用程序状态分散难以追踪和维护
 - react 始终整体刷新页面
@@ -93,3 +91,83 @@ DOM diff
 设计模式，使用react 组件新的方法模式。
 1. 高阶组件（一般不会有自己的 ui 呈现，只是负责为它自己封装的组件提供额外的功能支持，比如提供数据，  解决组件多层传递资源问题） 
 2. 函数作为子组件
+
+## contenxt   
+
+> Context 通过组件树提供了一个传递数据的方法，从而避免了在每一个层级手动的传递 props 属性。
+
+- 根节点 提供上下文数据 provider
+- 子节点共享这些数据
+- provider（是根节点）  value 设置的值通过 consumer 子节点的函数参数传入
+- 不要仅仅为了避免在几个层级下的组件传递 props 而使用 context，它是被用于在多个层级的多个组件需要访问相同数据的情景。
+
+```js
+const ThemeContext = React.createContext('light');
+
+class App extends React.Component {
+    render(){
+        return (
+            <ThemeContext.Provider value= "dark">
+                <ThemeButton>
+            </ThemeContext>
+        )
+    } 
+}
+function ThemeButton(prop){
+    return (
+        <ThemeContext.Consumer>
+            {
+                theme => <Button {...props} theme={theme}></Button>
+            }
+        </ThemeContext.Consumer>
+    )
+}
+
+```
+
+## 脚手架
+
+三种脚手架工具：
+1. Create React App，
+2. Codesandbox：在线代码编辑器，支持react、vue 以及 angular 等项目。在线脚手架
+3. Rekit：基于 create-react-app
+
+### 为什么需要脚手架
+
+web 开发日趋复杂
+1. react 管理 UI
+2. Redux 状态管理
+3. React/Router
+4. Babel 代码转换兼容
+5. eslint 代码审查
+
+脚手架工具提前定义好典型的项目需要的类库配置。
+
+create-react-app （facebook 推出）
+- 适合学习react 或者开发小型项目时使用，内置的工具是最小化
+- 整合了babel、webpack、 eslint...
+
+create-react-app + (Redux + React Router + less/scss + feature oriented architecture + dedicated ide) = Rekit
+
+## codesandbox 
+
+- webpack 打包工具运行在浏览器端
+- 让你不再关注业务之外端配置
+- 不需搭建本地环境
+
+## 为什么需要打包
+
+1. 编译 es6 语法特性，编译 jsx
+2. 整合资源，例如图片， less/sass
+3. 优化代码体积
+
+- webpack： 各种loader => 每种资源打包后形成可以部署的资源
+- 有了脚手架工具，不需要关注太多细节，就可以得到打包结果。
+
+## 打包注意事项
+
+1. 设置 nodejs 环境变量为 production（开发环境和生产环境不一样）  `scripts/build.js`
+2. 禁用开发时专用代码，比如logger
+3. 设置应用根路径： `package.json`  "homepage" 属性指明应用会被部署在哪里
+
+- `npm run build` 通常会 生成一个 build 目录，用这个文件夹在生产环境中 部署。
